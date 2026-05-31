@@ -100,21 +100,22 @@
   }
   .stat {
     background:var(--surface);
-    padding:18px;
+    padding:24px 12px;
     text-align:center;
   }
   .stat-v {
-    font-size:24px;
+    font-size:30px;
     font-weight:800;
     color:var(--accent);
     display:block;
-    margin-bottom:3px;
+    margin-bottom:8px;
+    letter-spacing:-1px;
   }
   .stat-l {
     font-family:'Space Mono',monospace;
-    font-size:9px;
-    color:var(--muted);
-    letter-spacing:1.5px;
+    font-size:10px;
+    color:#888;
+    letter-spacing:2px;
     text-transform:uppercase;
   }
 
@@ -552,13 +553,13 @@
   <div class="badge"><span class="dot"></span>Ethereum Mainnet · Live</div>
 
   <h1>Your ICO funds<br>are still <em>out there.</em></h1>
-  <p class="sub">Two 2017–2018 presale pool contracts were never emptied. ~133 ETH sitting unclaimed. Connect your wallet and claim in one click — free, no middleman.</p>
+  <p class="sub">Three 2017–2018 presale pool contracts were never emptied. ~172 ETH sitting unclaimed. Connect your wallet and claim in one click — free, no middleman.</p>
 
   <!-- Stats -->
   <div class="stats">
-    <div class="stat"><span class="stat-v">~133</span><span class="stat-l">ETH Locked</span></div>
-    <div class="stat"><span class="stat-v">66+</span><span class="stat-l">Contributors</span></div>
-    <div class="stat"><span class="stat-v">7 yrs</span><span class="stat-l">Sitting Idle</span></div>
+    <div class="stat"><span class="stat-v">172 ETH</span><span class="stat-l">Locked</span></div>
+    <div class="stat"><span class="stat-v">76+</span><span class="stat-l">Contributors</span></div>
+    <div class="stat"><span class="stat-v">7 Yrs</span><span class="stat-l">Sitting Idle</span></div>
   </div>
 
   <!-- Contracts -->
@@ -581,6 +582,15 @@
         <div class="cc-addr">0x39590f0b13693aeb5e16a414be8ba28b4c382cc6</div>
       </div>
       <a class="cc-link" href="https://etherscan.io/address/0x39590f0b13693aeb5e16a414be8ba28b4c382cc6" target="_blank">Etherscan ↗</a>
+    </div>
+    <div class="cc">
+      <div class="cc-yr">2018</div>
+      <div class="cc-info">
+        <div class="cc-eth">~39 ETH · 10 contributors</div>
+        <div class="cc-meta">Presale cancelled · contract in Refund state · call refund()</div>
+        <div class="cc-addr">0xf8f6e626af09b0455acd9162beb5a484724f25b5</div>
+      </div>
+      <a class="cc-link" href="https://etherscan.io/address/0xf8f6e626af09b0455acd9162beb5a484724f25b5" target="_blank">Etherscan ↗</a>
     </div>
   </div>
 
@@ -671,13 +681,13 @@
 
 <script>
 // ── CONFIG ── Replace YOUR_HANDLE before deploying
-const X_HANDLE = 'YOUR_HANDLE';
+const X_HANDLE = 'safudev0702';
 document.getElementById('dmLink').href = `https://x.com/${X_HANDLE}`;
 
 // ── CONTRACTS ──
 const CONTRACTS = [
   {
-    label: '2018 Presale Pool',
+    label: '2018 Presale Pool (LINO/HEALP/BULLEON)',
     address: '0xf058ee35f381a12b3a0f504025419dcaf047ce7f',
     tokens: ['LINO', 'HEALP', 'BULLEON'],
     // Function selectors to try for balance check
@@ -694,7 +704,7 @@ const CONTRACTS = [
     ]
   },
   {
-    label: '2017 Presale Pool',
+    label: '2017 Presale Pool (Cintix)',
     address: '0x39590f0b13693aeb5e16a414be8ba28b4c382cc6',
     tokens: [],
     balanceSelectors: [
@@ -706,6 +716,21 @@ const CONTRACTS = [
       { sig: '0x853828b6', name: 'withdrawAll()' },
       { sig: '0x3ccfd60b', name: 'withdraw()' },
       { sig: '0x590e1ae3', name: 'refund()' },
+    ]
+  },
+  {
+    label: '2018 Presale Pool (Refund State)',
+    address: '0xf8f6e626af09b0455acd9162beb5a484724f25b5',
+    tokens: [],
+    balanceSelectors: [
+      '0x27e235e3',
+      '0xfc7e286d',
+      '0x1900cf43',
+    ],
+    withdrawSelectors: [
+      { sig: '0x590e1ae3', name: 'refund()' },
+      { sig: '0x853828b6', name: 'withdrawAll()' },
+      { sig: '0x3ccfd60b', name: 'withdraw()' },
     ]
   }
 ];
